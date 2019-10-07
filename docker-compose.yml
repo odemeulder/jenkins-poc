@@ -1,0 +1,19 @@
+# this docker-compose file is not working
+# 
+# the following command works:
+# docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 
+# -v /var/run/docker.sock:/var/run/docker.sock 
+# -v /usr/local/bin/docker:/usr/local/bin/docker jenkins/jenkins:lts
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+    - "8080:8080"
+    - "50000:50000"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/local/bin/docker:/usr/local/bin/docker
+    - jenkins_home:/var/jenkins_home
+volumes:
+  jenkins_home: {}

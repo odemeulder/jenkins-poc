@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+  vars_files:
+    - group_vars/vars.yml
+  become: yes
+  tasks:
+    - name: Add public key to authorized_keys
+      lineinfile:
+        path: /home/vagrant/.ssh/authorized_keys
+        line: "{{ jenkins_public_key }}"
+        create: yes
+    - name: Move private key
+      copy:
+        src: .secrets/jenkins_slave_key
+        dest: /home/vagrant/.ssh
+        owner: vagrant
+        group: vagrant
+        mode: 0400
+    - name: "Install git"
+      yum:
+        name: git
+        state: latest
+    - name: "Install java"
+      yum:
+        name: java-1.8.0-openjdk-devel
+        state: latest
