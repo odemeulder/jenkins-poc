@@ -16,4 +16,6 @@ services:
     - /usr/local/bin/docker:/usr/local/bin/docker
     - jenkins_home:/var/jenkins_home
 volumes:
-  jenkins_home: {}
+  jenkins_home:
+    external: 
+      name: jenkins_home

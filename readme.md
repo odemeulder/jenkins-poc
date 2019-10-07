@@ -2,7 +2,9 @@
 
 ## VagrantFile and provisioning
 
-Vagrant file spins up two servers `ci` and `app`. On the `ci` server, we install ansible (with yum)
+Vagrant file spins up two servers `ci` and `app`. On the `ci` server, we install ansible (with yum).
+
+The `ci` server is set up as a node in Jenkins.
 
 Need to generate a private key on `ci`. 
 ```
